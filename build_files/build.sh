@@ -10,18 +10,7 @@ set -ouex pipefail
 # https://mirrors.rpmfusion.org/mirrorlist?path=free/fedora/updates/39/x86_64/repoview/index.html&protocol=https&redirect=1
 
 # this installs a package from fedora repos
-# dnf5 install -y tmux
-
-# Layered Applications
-LAYERED_PACKAGES=(
-    zsh
-)
-
-dnf5 install --setopt=install_weak_deps=False -y "${LAYERED_PACKAGES[@]}"
-
-# Set Zsh as the default shell for the main user
-RUN usermod --shell /usr/bin/zsh root && \
-    sed -i 's|/bin/bash|/usr/bin/zsh|g' /etc/default/useradd || true
+# dnf5 install -y tmux 
 
 # Use a COPR Example:
 #
