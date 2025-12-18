@@ -12,31 +12,8 @@ set -ouex pipefail
 # this installs a package from fedora repos
 # dnf5 install -y tmux 
 
-dnf5 remove -y xwaylandvideobridge
-
-# Gets the mandatory packages installed in kde-desktop and removes them.
-dnf5 group info kde-desktop | \
-    sed -n '/^Mandatory packages\s*:/,/^\(Default\|Optional\) packages\s*:/ {
-        /^\(Default\|Optional\) packages\s*:/q  # Quit if we hit Default/Optional header
-        s/^.*:[[:space:]]*//p
-    }' | \
-    xargs dnf5 remove -y
-
-dnf5 clean all && \
-rm -rf /var/cache/dnf/*
-
 dnf5 group install -y cosmic-desktop cosmic-desktop-apps
-
-dnf5 clean all && \
-rm -rf /var/cache/dnf/*
-
-dnf5 clean all && \
-rm -rf /var/cache/dnf/*
-
 dnf5 install -y @cosmic-desktop-environment
-dnf5 clean all && \
-rm -rf /var/cache/dnf/*
-
 systemctl disable display-manager && systemctl enable cosmic-greeter.service -f
 
 # Use a COPR Example:
