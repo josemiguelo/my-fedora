@@ -12,16 +12,16 @@ set -ouex pipefail
 # this installs a package from fedora repos
 # dnf5 install -y tmux 
 
-dnf config-manager --set-enabled fedora-cisco-openh264
-dnf swap -y noopenh264 mozilla-openh264 --allowerasing
+dnf5 config-manager setopt fedora-cisco-openh264.enabled=1
+dnf5 swap -y noopenh264 mozilla-openh264 --allowerasing
 
-dnf install -y \
+dnf5 install -y \
     @cosmic-desktop-environment \
     pipewire-config-raop \
     firefox \
     --allowerasing --best
 
-dnf clean all
+dnf5 clean all
 
 # Use a COPR Example:
 #
