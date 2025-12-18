@@ -12,16 +12,9 @@ set -ouex pipefail
 # this installs a package from fedora repos
 # dnf5 install -y tmux 
 
-dnf config-manager --set-enabled fedora-cisco-openh264
-dnf swap -y noopenh264 mozilla-openh264 --allowerasing
-
-dnf install -y \
-    @cosmic-desktop-environment \
-    pipewire-config-raop \
-    firefox \
-    --allowerasing --best
-
-dnf clean all
+dnf5 group install -y cosmic-desktop cosmic-desktop-apps
+dnf5 install -y @cosmic-desktop-environment
+systemctl disable display-manager && systemctl enable cosmic-greeter.service -f
 
 # Use a COPR Example:
 #
