@@ -25,6 +25,16 @@ FROM ghcr.io/ublue-os/bazzite-dx-nvidia-gnome:stable
 
 # RUN rm /opt && mkdir /opt
 
+# 1. Copy and set permissions for the script
+COPY files/scripts/steam-fixer.sh /usr/bin/steam-fixer.sh
+RUN chmod +x /usr/bin/steam-fixer.sh
+
+# 2. Copy the systemd user unit
+COPY files/systemd/user/steam-fixer.service /usr/lib/systemd/user/steam-fixer.service
+
+# 3. Enable the service for all users (current and future)
+RUN systemctl --global enable steam-fixer.service
+
 ### MODIFICATIONS
 ## make modifications desired in your image and install packages by modifying the build.sh script
 ## the following RUN directive does all the things required to run "build.sh" as recommended.
