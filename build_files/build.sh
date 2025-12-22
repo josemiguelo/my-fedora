@@ -12,9 +12,11 @@ set -ouex pipefail
 # this installs a package from fedora repos
 # dnf5 install -y tmux 
 
+# dev dependencies
+dnf5 install -y zlib-devel
+
+# wezterm
 dnf5 install -y https://github.com/wezterm/wezterm/releases/download/20240203-110809-5046fc22/wezterm-20240203_110809_5046fc22-1.fedora39.x86_64.rpm
-
-
 
 # Use a COPR Example:
 #
