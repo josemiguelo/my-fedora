@@ -1,3 +1,5 @@
+Archiving in favor of an [image](https://github.com/josemiguelo/atomic-fedora) based on [bluebuild](https://blue-build.org)
+
 # image-template
 
 This repository is meant to be a template for building your own custom [bootc](https://github.com/bootc-dev/bootc) image. This template is the recommended way to make customizations to any image published by the Universal Blue Project.
